@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Daily Blogs</title>
+  <style>
+  .note {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    padding: 10px;
+    width: 750px;
+    margin: 16px;
+  }
+  </style>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <p class="navbar-brand">DAILY BLOGS</p>
+      </div>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- 6 -->
+          <li id="home"><a href="/">HOME</a></li>
+          
+          <li id="compose"><a href="/compose">COMPOSE</a></li>
+          <% if(Flag === false){ %>
+          <li id="contact"><a href="/register">REGISTER</a></li>
+          <li id="contact"><a href="/login">LOGIN</a></li>
+          <% } %>
+          <% if(Flag === true){ %>
+               <li id="contact"><a href="/logout">LOGOUT</a></li>
+          <% } %>
+          <li id="contact"><a href="/about">ABOUTUS</a></li>
+        </ul>
+    </div>
+  </nav>
+
+  <body>
+    <div class="container">
+
+<p>
+  
+  <h1><%= temp %> </h1>
+  <br>
+  <% for(var i=0;i < tmp.length ; i++){ %>
+         <% if(temp === tmp[i].title){ %>
+             <h3><%= tmp[i].content %> </h3>
+         <% } %>
+  <% } %>
+    
+</p>
+<%- include("partials/footer"); -%>
+
