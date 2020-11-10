@@ -24,8 +24,8 @@
           <% if(Flag === true){ %>
                <li id="contact"><a href="/logout">LOGOUT</a></li>
           <% } %>
-          <li id="contact"><a href="/about">ABOUTUS</a></li>
-
+          <li id="contact"><a href="/admin">ABOUTUS</a></li>
+          <li id="contact"><a href="/admin">ADMIN</a></li>
         </ul>
     </div>
   </nav>
@@ -35,15 +35,16 @@
 <h1>
 </h1>
 <p>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <h3>Compose_the_article</h3>
     <form action = "/" method = "POST">
         <div class = "form-group">
          <lable>Title</lable>
          <input type = "text" class = "form-control" name = "posttitle">
-         <label>Post</label>
+         <label>Content</label>
         <textarea name = "article"  class = "form-control"  rows = "5" cols = "30"></textarea>
         </div>
-        <button type = "submit" class = "btn btn-primary">publish</button>
+        <button  id = "btn" type= "submit" class = "btn btn-primary">TAKE ADMIN PERMISSION</button>
     </form>
     
 </p>

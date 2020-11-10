@@ -9,6 +9,7 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 
+
 var flag = false;
 
 const app = express();
@@ -36,7 +37,8 @@ mongoose.set("useCreateIndex", true);
 
 itemsSchema = new mongoose.Schema({
   title : String,
-  content : String
+  content : String,
+  isFlag : Boolean
 });
 
 userSchema = new mongoose.Schema({
@@ -60,7 +62,6 @@ passport.deserializeUser(User.deserializeUser());
 
 app.get("/", function(req,res){
   Item.find({}, function(err, foundItems){
-    var num = req.params.topic;
     res.render("home", {tt : foundItems, Flag : flag});
   })
     
@@ -140,15 +141,31 @@ app.get("/logout", function(req,res){
 app.post("/", function(req,res){
     const tmp = new Item({
       title : req.body.posttitle,
-      content : req.body.article
+      content : req.body.article,
+      isFlag : false
     });
     tmp.save();
-    res.redirect("/");
+    res.render("message", {Flag : flag});
+});
+
+
+app.post("/admin_login", function(req,res){
+     if(req.body.username === process.env.USERNAME && req.body.password === process.env.PASSWORD){
+           res.render("secret");
+           
+     }
+     else{
+       res.render("admin");
+     }       
 });
 
 
 app.get("/about",function(req,res){
     res.render("about", {Flag : flag});
+});
+
+app.get("/admin", function(req,res){
+    res.render("admin");
 });
 
 let port = process.env.PORT;

@@ -36,6 +36,7 @@
                <li id="contact"><a href="/logout">LOGOUT</a></li>
           <% } %>
           <li id="contact"><a href="/about">ABOUTUS</a></li>
+          <li id="contact"><a href="/admin">ADMIN</a></li>
         </ul>
     </div>
   </nav>
@@ -49,13 +50,16 @@
 <p>  
     
     <% tt.forEach(function(tmp){  %>
-     <div class = "note">
+     
+        <% if(tmp.isFlag === true){ %>
+          <div class = "note">
          <% var n = tmp.title; %>
          <% var num = n.toString(); %>
          <% var link = "/posts/" + num %>
          <a href= "<%= link  %>" ><p><h2><%= tmp.title  %></h2></p></a> 
-        <p><h4><%= tmp.content%></h4></p> 
-     </div>
+        <p><h4><%= tmp.content%></h4></p>
+      </div>
+         <% } %> 
      <% }) %>
 
     

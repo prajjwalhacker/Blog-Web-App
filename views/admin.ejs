@@ -4,14 +4,6 @@
 <head>
   <meta charset="utf-8">
   <title>Daily Blogs</title>
-  <style>
-    .circle-img {
-  border-radius: 50%;
-  border: 7px solid #fff;
-  width: 180px;
-  height: 180px;
-}
-  </style>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/styles.css">
@@ -25,13 +17,9 @@
           <li id="home"><a href="/">HOME</a></li>
           
           <li id="compose"><a href="/compose">COMPOSE</a></li>
-          <% if(Flag === false){ %>
           <li id="contact"><a href="/register">REGISTER</a></li>
           <li id="contact"><a href="/login">LOGIN</a></li>
-          <% } %>
-          <% if(Flag === true){ %>
                <li id="contact"><a href="/logout">LOGOUT</a></li>
-          <% } %>
           <li id="contact"><a href="/about">ABOUTUS</a></li>
           <li id="contact"><a href="/admin">ADMIN</a></li>
         </ul>
@@ -39,19 +27,17 @@
   </nav>
 
   <body>
-    <div class="container"></div>
+    <div class="container">
 
-    <div class="card">
-      <div class="top">
-        <center><h2 class="name">Prajjwal Soni</h2></center>
-        <center><img class="circle-img" src= "BeautyPlus_20180113170142_save.jpg" alt="avatar_img"/></center>
-      </div>
-      <div class="bottom">
-        <center><p>prajjwalsoni123@gmail.com</p></center>
-        <center><p>9653073680</p></center>
-      </div>
+<form action = "/admin_login" method = "POST">
+    <div class = "form-group">
+     <lable>ADMIN_USERNAME</lable>
+     <input type = "text" class = "form-control" name = "username">
+     <label>Password</label>
+    <input type = "password"  class = "form-control" name= "password">
     </div>
+    <button type = "submit" class = "btn btn-primary">Login</button>
+</form>
 
 
-
-    <%- include("partials/footer"); -%>
+<%- include("partials/footer"); -%>
