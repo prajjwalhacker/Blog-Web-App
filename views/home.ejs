@@ -12,7 +12,6 @@
        padding: 10px;
        width: 750px;
        margin: 16px;
-       
      }
      </style>
   <meta charset="utf-8">
@@ -56,8 +55,10 @@
          <% var n = tmp.title; %>
          <% var num = n.toString(); %>
          <% var link = "/posts/" + num %>
-         <a href= "<%= link  %>" ><p><h2><%= tmp.title  %></h2></p></a> 
-        <p><h4><%= tmp.content%></h4></p>
+         <p><h2><%= tmp.title  %></h2></p>
+         <% var str = tmp.content; %>
+        <p><h4><%= str.substr(0,70) + " ..." %></h4></p>
+        <a href= "<%= link  %>" class = "btt">Read More</a>
       </div>
          <% } %> 
      <% }) %>

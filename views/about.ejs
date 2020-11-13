@@ -11,6 +11,18 @@
   width: 180px;
   height: 180px;
 }
+  .contain{
+      height: 300px;
+      border: 2px solid black;
+      width : 300px;
+      margin : auto;
+      margin-top : 3px;
+      border-radius: 20px;
+      background-color: aqua;
+  }
+  .name{
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
   </style>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,19 +51,18 @@
   </nav>
 
   <body>
-    <div class="container"></div>
-
+    <div class="contain">
     <div class="card">
       <div class="top">
         <center><h2 class="name">Prajjwal Soni</h2></center>
         <center><img class="circle-img" src= "BeautyPlus_20180113170142_save.jpg" alt="avatar_img"/></center>
       </div>
       <div class="bottom">
-        <center><p>prajjwalsoni123@gmail.com</p></center>
-        <center><p>9653073680</p></center>
+        <center><p class = "name">prajjwalsoni123@gmail.com</p></center>
+        <center><p class = "name">9653073680</p></center>
       </div>
     </div>
-
+  </div>
 
 
     <%- include("partials/footer"); -%>
