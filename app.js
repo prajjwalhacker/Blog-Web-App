@@ -38,7 +38,8 @@ mongoose.set("useCreateIndex", true);
 itemsSchema = new mongoose.Schema({
   title : String,
   content : String,
-  isFlag : Boolean
+  isFlag : Boolean,
+  author : String
 });
 
 userSchema = new mongoose.Schema({
@@ -97,6 +98,10 @@ app.post("/register",function(req,res){
 })
 });
 
+let ss = "";
+
+let usernamee;
+
 app.post("/login", function(req,res){
    
   const user = new User({
@@ -104,7 +109,7 @@ app.post("/login", function(req,res){
      password : req.body.password
   }
   );
-  
+  usernamee = req.body.username;
   req.login(user, function(err){
       if(err){
          console.log(err);
@@ -112,6 +117,12 @@ app.post("/login", function(req,res){
       else{
          passport.authenticate("local")(req,res, function(){
              flag = req.isAuthenticated();
+             for(let i=0;i<usernamee.length;i++){
+              if(usernamee[i] === '@'){
+                break;
+              }
+              ss = ss + usernamee[i];
+         }
              res.redirect("/");
          });
       }
@@ -142,7 +153,8 @@ app.post("/", function(req,res){
     const tmp = new Item({
       title : req.body.posttitle,
       content : req.body.article,
-      isFlag : false
+      isFlag : false,
+      author : ss
     });
     tmp.save();
     res.render("message", {Flag : flag});
@@ -175,4 +187,9 @@ if(port == null || port  == ""){
 
 app.listen(port, function() {
   console.log("Server started on port 3000");
+});
+
+app.get("/profile", function(req,res){
+    let ss = "";
+    res.render("profile", {s : ss, Flag : flag});
 });
